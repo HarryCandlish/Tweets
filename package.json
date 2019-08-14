@@ -4,6 +4,9 @@
   "main": "index.js",
   "author": "HarryCandlish <hcnd90@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "dev": "nodemon server"
+  },
   "dependencies": {
     "express": "^4.17.1",
     "knex": "^0.19.1",
