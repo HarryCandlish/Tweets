@@ -24,9 +24,19 @@ function getTweets(testDb) {
 function createTweet(tweet, testDb) {
   const db = testDb || connection;
 
-  return db("tweet").insert(tweet);
-}
+  return db("users")
+    .where("username", tweet.username)
+    .first()
+    .then(user => {
+      const newTweet = {
+        text: tweet.text,
+        tweeted_at: new Date().getTime(),
+        user_id: user.id
+      };
 
+      return db("tweets").insert(newTweet);
+    });
+}
 // Two Step Query
 
 function getTweetsByUsername(username, testDb) {
